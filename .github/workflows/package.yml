@@ -1,0 +1,19 @@
+name: Build package-openvox-agent-little-plugger
+
+on:
+  push:
+    branches: [ '**' ]
+    tags:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: pkging/ci-workflows/.github/workflows/package.yml@main
+    with:
+      ci_workflows_ref: "main"
+      runner_labels: '["self-hosted","pkging"]'
+      matrix: |
+        el9: x86_64
+        debian12: x86_64
+    secrets: inherit

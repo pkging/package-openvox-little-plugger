@@ -1,0 +1,11 @@
+openvox-agent-little-plugger (1.1.4-2) stable; urgency=low
+
+  * Rename package, remove OpenVox 7 support
+
+ -- Lennart Betz <lbetz@prefork.de>  Mon, 27 Jul 2026 07:09:27 +0100
+
+puppet-agent-little-plugger (1.1.4-1) stable; urgency=low
+
+  * Release 1.1.4
+
+ -- Lennart Betz <lennart.betz@netways.de>  Sat, 31 Aug 2024 15:18:19 +0200

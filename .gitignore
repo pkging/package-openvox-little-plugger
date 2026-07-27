@@ -1,0 +1,25 @@
+# Debian package build outputs
+*.deb
+*.build
+*.buildinfo
+*.changes
+*.dsc
+*.tar.*
+
+# Locally downloaded gem payloads
+*.gem
+
+# Local test/build logs
+.tmp-*.log
+
+# debhelper and dpkg generated files
+debian/.debhelper/
+debian/debhelper-build-stamp
+debian/files
+debian/*.substvars
+debian/tmp/
+upstream/
+
+# Package staging directories generated during build
+debian/openvox-agent-little-plugger/
+debian/puppet-agent-little-plugger/
