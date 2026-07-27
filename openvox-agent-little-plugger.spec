@@ -2,7 +2,7 @@
 %define gem_cache_dir /opt/puppetlabs/puppet/share/gems
 
 Summary:   LittlePlugger is a module that provides Gem based plugin management
-Name:      openvox-agent-%{gem_name%{gem_name}}
+Name:      openvox-agent-%{gem_name}
 Version:   1.1.4
 Release:   2%{?dist}
 Group:     Development/Languages
