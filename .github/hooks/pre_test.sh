@@ -15,17 +15,28 @@ fail_unsupported() {
   exit 1
 }
 
-if is_el; then
-  log "RHEL-kompatible Distro erkannt – installiere OpenVox..."
+if is_el || is_fedora; then
+  log "RPM-basierte Distro erkannt – installiere OpenVox..."
 
-  case "${RELEASE}" in
-    8|9|10) ;;
-    *)
-      fail_unsupported "OpenVox 8 Release-Paket fuer EL ${RELEASE} ist nicht in der Allowlist. Unterstuetzte EL-Versionen: 8, 9, 10."
-      ;;
-  esac
-
-  release_url="https://yum.voxpupuli.org/openvox8-release-el-${RELEASE}.noarch.rpm"
+  if is_el; then
+    case "${RELEASE}" in
+      8|9|10) ;;
+      *)
+        fail_unsupported "OpenVox 8 Release-Paket fuer EL ${RELEASE} ist nicht in der Allowlist. Unterstuetzte EL-Versionen: 8, 9, 10."
+        ;;
+    esac
+    release_url="https://yum.voxpupuli.org/openvox8-release-el-${RELEASE}.noarch.rpm"
+  elif is_fedora; then
+    case "${RELEASE}" in
+      43|44) ;;
+      *)
+        fail_unsupported "OpenVox 8 Release-Paket fuer Fedora ${RELEASE} ist nicht in der Allowlist. Unterstuetzte Fedora-Versionen: 43, 44."
+        ;;
+    esac
+    release_url="https://yum.voxpupuli.org/openvox8-release-fedora-${RELEASE}.noarch.rpm"
+  else
+    fail_unsupported "Konnte RPM-Distribution nicht klassifizieren (ID=${ID}, ID_LIKE=${ID_LIKE}, RELEASE=${RELEASE})."
+  fi
 
   dnf install -y --allowerasing ca-certificates curl
   if ! curl -fsSI "${release_url}" >/dev/null; then
